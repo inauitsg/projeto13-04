@@ -11,20 +11,25 @@ class Contato {
     }
 
    
-    consultarTodos(display) {
+    salvar() {
         fetch(urlBase, {
-            method: 'POST',
-            body: JSON.stringify(this),
-            headers: {
-                'Content-type': 'Application/json'}
+                method: 'POST',
+                body: JSON.stringify(this),
+                headers: {
+                    'Content-type': 'Application/json'
+                }
             })
+            .catch(erro => console.log(erro))
+    }
+
+    consultarTodos(display) {
+        fetch(urlBase)
             .then(x => x.text())
             .then(data => display(data))
     }
 
-    //função para editar 
-    consultarPeloId(idcadastro, display) {
-        fetch(`${urlBase}/${idcadastro}`)
+    consultarPeloId(idcontato, display) {
+        fetch(`${urlBase}/${idcontato}`)
             .then(x => x.text())
             .then(data => display(data))
     }
@@ -39,8 +44,8 @@ class Contato {
         })
     }
 
-    excluir(idcadastro) {
-        fetch(`${urlBase}/${idcadastro}`, {
+    excluir(idcontato) {
+        fetch(`${urlBase}/${idcontato}`, {
             method: 'DELETE'
         })
     }

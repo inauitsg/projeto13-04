@@ -12,7 +12,7 @@
 <body onload="pegarParametro()">
     <div class="container">
         <h1>Editar Cadastro médico</h1>
-        <div class="entrada">
+        <div>
             <input type="text" class="form-control mb-3" disabled/>
             <input type="text" class="form-control mb-3" placeholder="Informe especialidade" required/>
             <input type="text" class="form-control mb-3" placeholder="Informe nome do(a) médico(a)" required/>
@@ -32,10 +32,10 @@
     <script>
         function pegarParametro() {
             const urlParams = new URLSearchParams(window.location.search)
-            let idcadastro = urlParams.get('id')
+            let idcontato = urlParams.get('id')
 
             let ob = new Contato()
-            ob.consultarPeloId(idcadastro, preencheForm)
+            ob.consultarPeloId(idcontato, preencheForm)
         }
 
         function preencheForm(data) {
